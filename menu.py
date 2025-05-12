@@ -1,45 +1,47 @@
+from typing import List
+
 class MenuItem:
-    def __init__(self, name:str, price:int, quantily:int):
+    def __init__(self, name:str, price:int, quantity:int):
         self.name = name
         self.price = price
-        self.quantily = quantily
+        self.quantity = quantity
     
     def price_total(self)->int:
-        return self.price*self.quantily
+        return self.price*self.quantity
     
     def __str__(self):
         return f"{self.name}: {self.price}$"
 
 class Appetizer(MenuItem):
-    def __init__(self, name:str, price:int, quantily:int, size:str):
-        super().__init__(name, price, quantily)
+    def __init__(self, name:str, price:int, quantity:int, size:str):
+        super().__init__(name, price, quantity)
         self.size = size
 
 class Drink(MenuItem):
-    def __init__(self, name:str, price:int, quantily:int, type:str):
-        super().__init__(name, price, quantily)
+    def __init__(self, name:str, price:int, quantity:int, type:str):
+        super().__init__(name, price, quantity)
         self.type = type
 
 class MainCourse(MenuItem):
-    def __init__(self, name:str, price:int, quantily:int, vegetarian:bool, 
+    def __init__(self, name:str, price:int, quantity:int, vegetarian:bool, 
                 family_size:bool):
-        super().__init__(name, price, quantily)
+        super().__init__(name, price, quantity)
         self.vegetarian = vegetarian
         self.family_size = family_size
 
 class Dessert(MenuItem):
-    def __init__(self, name:str, price:int, quantily:int, size:str):
-        super().__init__(name, price, quantily)
+    def __init__(self, name:str, price:int, quantity:int, size:str):
+        super().__init__(name, price, quantity)
         self.size = size
 
 class Order:
-    def __init__(self, list_menu):
+    def __init__(self, list_menu:List[MenuItem):
         self.list_menu = list_menu
     
-    def  add_items(self, item):
+    def add_items(self, item):
         self.list_menu.append(item)
     
-    def total_bill_amount(self, discount:bool)->int:
+    def total_bill_amount(self, discount:float)->int:
         total = sum(i.price_total() for i in self.list_menu)
         return int(total*(1-discount))
     
