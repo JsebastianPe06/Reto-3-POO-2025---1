@@ -118,14 +118,3 @@ linea = Line(punto2, punto3)
 print(rec.compute_area())
 print(rec.compute_interference_point(punto2))
 print(rec.compute_interference_line(linea))
-
-
-'''
-class Rectangle:
-    def __init__(self, width:float, height:float, bottom_left:Point):
-        self.width = width
-        self.height = height
-        self.b_left = bottom_left
-        self.t_right = Point(self.b_left.x+width, self.b_left.y+height)
-        self.center = Point(self.b_left.x+(width/2), self.b_left.y+(height/2))
-'''
